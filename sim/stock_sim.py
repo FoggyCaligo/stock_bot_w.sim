@@ -12,9 +12,20 @@ class Order:
         self.state = True
 
 
-class Stock:
+class Customer:
+    def __init__(self):
+        self.orders = []
+
+
+    def update():
+        pass
+
+
+
+
+class Sim:
     
-    def __init__(self,code):
+    def __init__(self,code):#initialize variables
         self.code = code
         self.hogalen = 20
         self.tick = 500
@@ -27,20 +38,7 @@ class Stock:
             bottomprice += self.tick
         for i in range(self.hogalen):#init_amountarr
             self.amountarr[i] = random.randint(0,30)
-        
-    def update2(self):
-        buyidx = random.randint(0,9)
-        sellidx = random.randint(10,19)
-        randamount = random.randint(1,10)
-        if(self.amountarr[buyidx]>randamount and self.amountarr[sellidx]>randamount):
-                self.amountarr[buyidx] -= randamount
-                self.amountarr[sellidx]-= randamount
-        print(buyidx,":",sellidx,":",randamount)
-        #add_order
-        randidx = random.randint(0,19)
-        randamount = random.randint(1,10)
-        self.amountarr[randidx] += randamount
-
+    #indicates changing order amount 
     def update(self):
         origidx = random.randint(0,19)
         targetidx = random.randint(0,19)
@@ -52,7 +50,7 @@ class Stock:
             elif(targetidx<=9 and self.amountarr[origidx]>randamount and self.amountarr[targetidx]>randamount):
                 self.amountarr[origidx]-= randamount
                 self.amountarr[targetidx] -= randamount        
-        else:
+        else:#buy
             if(targetidx<=9 and self.amountarr[origidx]>randamount):
                 self.amountarr[origidx] -= randamount
                 self.amountarr[targetidx] += randamount
@@ -61,7 +59,7 @@ class Stock:
                 self.amountarr[targetidx] -= randamount        
         #add_order
         randidx = random.randint(0,19)
-        randamount = random.randint(1,5)
+        randamount = random.randint(1,5)#add amount
         self.amountarr[randidx] += randamount
 
     def show(self):
@@ -85,7 +83,7 @@ class Stock:
 
 
 
-
+    
 
 
 
@@ -95,7 +93,7 @@ class Kiwoom:
     def __init__(self):
         self.stockarr = []
         for i in range(10):
-            self.stockarr.append(Stock(str(i)))
+            self.stockarr.append(Sim(str(i)))
 
     def update(self):
         rand_stock = random.randrange(0,10)
@@ -110,7 +108,7 @@ class Kiwoom:
 
 
 
-stock = Stock("a");
+stock = Sim("a");
 stock.show()
 
 
