@@ -95,9 +95,15 @@ class Kiwoom:
         for i in range(10):
             self.stockarr.append(Sim(str(i)))
 
-    def update(self):
-        rand_stock = random.randrange(0,10)
-        currstock = self.stockarr[rand_stock]
+    def get_change(self):
+        rand_stockidx = random.randrange(0,10)
+        for i in range(100):
+            self.stockarr[rand_stockidx].update()
+        
+
+        rsult= []
+        rsult.append(rand_stockidx, self.stockarr[rand_stockidx].)
+        return rsult
         
 
     pass
@@ -112,7 +118,7 @@ stock = Sim("a");
 stock.show()
 
 
-for i in range(10):
+for i in range(3):
     for i in range(100):
         stock.update()
     stock.show()
